@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <%- include('component/head') %>
+  <body class="custom-background">
+    <div id="page">
+      <header id="branding">
+        <div id="hgroup">
+          <h1 id="site-title"><a href="/" rel="home"><%= locale("bars and waves", { locale }) %></a></h1>
+          <h2 id="site-description"><%= locale("caprice blog", { locale }) %></h2>
+        </div>
+        <a href="/">
+          <img src="/static/picture/header.jpg" alt="bars and waves" />
+        </a>
+
+        <nav id="access" role="navigation">
+          <div class="menu-container">
+            <ul id="menu-1" class="menu">
+              <li id="menu-item-1"><a href="/"><%= locale("LATEST") %></a></li>
+              <li id="menu-item-2"><a href="/category/lifestyle"><%= locale("LIFESTYLE") %></a></li>
+              <li id="menu-item-2"><a href="/category/programming"><%= locale("PROGRAMMING") %></a></li>
+              <li id="menu-item-2"><a href="/category/still"><%= locale("STILL") %></a></li>
+            </ul>
+          </div>
+        </nav>
+
+      </header>
+
+      <% if (pageType === 'digest') { %>
+        <%- include('digest', { articleList, locale }) %>
+      <% } %>
+      <% if (pageType === 'detail') { %>
+        <%- include('detail', { articleList, locale }) %>
+      <% } %>
+
+      <footer id="colophon" role="contentinfo">
+        <div id="supplementary" class="two">
+          <div id="first" class="widget-area" role="complementary">
+            <aside class="widget"><div class="textwidget">
+              <a href="https://github.com/derekchuank/bars-and-waves">github</a><br>
+              email: derekchuank@outlook.com
+            </div></aside>
+          </div>
+        </div>
+
+        <div id="site-generator">
+          <a href="/" title="welcome to bars and waves" rel="generator">Power by Bars-and-waves </a>
+          Copyright &copy; 2020-2025 Bars and waves. All Rights Reserved
+          <a href="/sitemap.xml" title="sitemap">Sitemap</a>
+        </div>
+      </footer>
+      <%- include('component/script') %>
+    </div>
+  </body>
+</html>

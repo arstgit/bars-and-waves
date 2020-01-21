@@ -1,0 +1,44 @@
+{
+  "name": "bars-and-waves",
+  "version": "1.0.0",
+  "description": "Personal blog.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "start": "node src/app",
+    "prettier": "prettier --write --no-semi --single-quote **/*.{js,css}",
+    "test": "NODE_ENV=test node test",
+    "deploy": "sh bin/deploy-remote.sh",
+    "dev": "nodemon -i data --exec \"npm start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/derekchuank/bars-and-waves.git"
+  },
+  "keywords": [
+    "blog"
+  ],
+  "author": "derekchuank",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/derekchuank/bars-and-waves/issues"
+  },
+  "homepage": "https://github.com/derekchuank/bars-and-waves#readme",
+  "dependencies": {
+    "ejs": "^3.0.1",
+    "highlight.js": "^9.18.0",
+    "koa": "^2.11.0",
+    "koa-morgan": "^1.0.1",
+    "koa-ratelimit": "^4.2.1",
+    "koa-router": "^7.4.0",
+    "lru-cache": "^5.1.1",
+    "marked": "^0.8.0",
+    "psychedelic": "^1.0.1",
+    "ya-config-loader": "^1.0.0",
+    "ya-locale": "^1.0.1",
+    "ya-require-dir": "^1.0.0"
+  }
+}

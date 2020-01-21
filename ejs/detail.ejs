@@ -1,0 +1,19 @@
+<div id="main" class="singular">
+  <div id="primary">
+    <div id="content">
+      <% for(let item of articleList) {%>
+        <article class="hentry">
+        <header class="entry-header">
+          <h1 class="entry-title"><%= item.title %></h1>
+        <div class="entry-meta">
+          <span class="sep"><%= locale('Date') + ': ' %></span><time class="entry-date"><%= item.date %></time>
+        </div>
+        </header>
+        <div class="entry-content markdown-body">
+          <%- markdown(item.content) %>
+        </div>
+        </article>
+      <% }%>
+    </div>
+  </div>
+</div>
