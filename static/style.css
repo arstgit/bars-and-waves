@@ -377,3 +377,8 @@ ul {
 .widget a:active {
   text-decoration: underline;
 }
+
+#disqus_thread {
+  margin: 6% auto 0;
+  width: 77%;
+}
