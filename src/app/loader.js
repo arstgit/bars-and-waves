@@ -41,7 +41,7 @@ function Loader() {
   })
 
   this.use(async (ctx, next) => {
-    lang = ctx.cookies.get('lang') || 'zh'
+    let lang = ctx.get('Accept-Language').includes('zh-CN') ? 'zh' : 'en'
 
     ctx.custom.locale = str => {
       return me.locale(str, lang)
