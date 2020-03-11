@@ -5,20 +5,23 @@
     <div id="page">
       <header id="branding">
         <div id="hgroup">
-          <h1 id="site-title"><a href="/" rel="home"><%= locale("bars and waves", { locale }) %></a></h1>
+          <h1 id="site-title"><a href="/<%= lang %>" rel="home"><%= locale("bars and waves", { locale }) %></a></h1>
           <h2 id="site-description"><%= locale("caprice blog", { locale }) %></h2>
         </div>
-        <a href="/">
+        <a href="/<%= lang %>">
           <img src="/static/picture/header.jpg" alt="bars and waves" />
         </a>
 
         <nav id="access" role="navigation">
           <div class="menu-container">
             <ul id="menu-1" class="menu">
-              <li id="menu-item-1"><a href="/"><%= locale("LATEST") %></a></li>
-              <li id="menu-item-2"><a href="/category/lifestyle"><%= locale("LIFESTYLE") %></a></li>
-              <li id="menu-item-2"><a href="/category/programming"><%= locale("PROGRAMMING") %></a></li>
-              <li id="menu-item-2"><a href="/category/still"><%= locale("STILL") %></a></li>
+              <li class="normal-li"><a href="/<%= lang %>"><%= locale("LATEST") %></a></li>
+              <li class="normal-li"><a href="/<%= lang %>/category/lifestyle"><%= locale("LIFESTYLE") %></a></li>
+              <li class="normal-li"><a href="/<%= lang %>/category/programming"><%= locale("PROGRAMMING") %></a></li>
+              <li class="normal-li"><a href="/<%= lang %>/category/still"><%= locale("STILL") %></a></li>
+              <li class="normal-li"><a href="/<%= lang %>/category/webmaster-recommended"><%= locale("WEBMASTER RECOMMANDED") %></a></li>
+              <li id="button-lang-zh"><a href="/zh<%= pathExcludeLang %>">中文</a></li>
+              <li id="button-lang-en"><a href="/en<%= pathExcludeLang %>">English</a></li>
             </ul>
           </div>
         </nav>
@@ -43,7 +46,7 @@
         </div>
 
         <div id="site-generator">
-          <a href="/" title="welcome to bars and waves" rel="generator">Power by Bars-and-waves </a>
+          <a href="/<%= lang %>" title="welcome to bars and waves" rel="generator">Power by Bars-and-waves </a>
           Copyright &copy; 2020-2025 Bars and waves. All Rights Reserved
           <a href="/sitemap.xml" title="sitemap">Sitemap</a>
         </div>

@@ -40,19 +40,10 @@ function Loader() {
     await next()
   })
 
-  this.use(async (ctx, next) => {
-    let lang = ctx.get('Accept-Language').includes('zh-CN') ? 'zh' : 'en'
-
-    ctx.custom.locale = str => {
-      return me.locale(str, lang)
-    }
-    await next()
-  })
-
   this.use(koaRouter.routes())
 
   this.on('error', (err, ctx) => {
-    console.log('server error: ' + err + ctx)
+    console.error(err)
   })
 }
 

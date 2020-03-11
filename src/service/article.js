@@ -9,45 +9,59 @@ let dir = __dirname + '/../../article'
 let article = load(dir)
 
 articleService.article = article
-articleService.get = async function(fileName) {
+articleService.get = async function(expectedLang, fileName) {
   await populateArticle(article)
 
   let result = []
-  for (let type of Object.keys(article)) {
-    for (let articleName of Object.keys(article[type])) {
-      if (articleName === fileName) {
-        result.push(article[type][articleName])
-      }
-    }
-  }
+  Object.keys(article).map(lang => {
+    if (lang !== expectedLang) return
+
+    Object.keys(article[lang]).map(category => {
+      Object.keys(article[lang][category]).map(articleName => {
+        if (articleName === fileName) {
+          result.push(article[lang][category][articleName])
+        }
+      })
+    })
+  })
   return result
 }
 
-articleService.getRandomList = async function() {
+articleService.getRandomList = async function(expectedLang) {
   await populateArticle(article)
   let result = []
-  for (let type of Object.keys(article)) {
-    for (let articleName of Object.keys(article[type])) {
-      result.push(article[type][articleName])
-    }
-  }
+  Object.keys(article).map(lang => {
+    if (lang !== expectedLang) return
+
+    Object.keys(article[lang]).map(category => {
+      Object.keys(article[lang][category]).map(articleName => {
+        result.push(article[lang][category][articleName])
+      })
+    })
+  })
+
   result = result.sort((a, b) => 0.5 - Math.random())
   result = result.slice(0, 5)
   return result
 }
 
-articleService.getList = async function(category) {
+articleService.getList = async function(expectedLang, expectedCategory) {
   await populateArticle(article)
   let result = []
-  for (let type of Object.keys(article)) {
-    if (category && type !== category) continue
 
-    for (let articleName of Object.keys(article[type])) {
-      result.unshift(article[type][articleName])
-    }
-  }
+  Object.keys(article).map(lang => {
+    if (lang !== expectedLang) return
 
-  if (!category) {
+    Object.keys(article[lang]).map(category => {
+      if (expectedCategory && category !== expectedCategory) return
+
+      Object.keys(article[lang][category]).map(articleName => {
+        result.unshift(article[lang][category][articleName])
+      })
+    })
+  })
+
+  if (!expectedCategory) {
     result = result.sort((a, b) => {
       if (a.date < b.date) {
         return 1
@@ -63,23 +77,23 @@ async function populateArticle(article) {
   if (populated === true) return
   populated = true
 
-  for (let type of Object.keys(article)) {
-    for (let articleName of Object.keys(article[type])) {
-      let content = await article[type][articleName]
-      let newlineIndex = content.indexOf('\n')
-      article[type][articleName] = { fileName: articleName }
-      article[type][articleName].content = content.substring(newlineIndex + 2)
-      article[type][articleName].date = articleName.split('_')[0]
-      article[type][articleName].digest = content
-        .split('\n')[2]
-        .substring(0, 150)
-      article[type][articleName].digest2 = content
-        .split('\n')[2]
-        .substring(0, 40)
+  for (let lang of Object.keys(article)) {
+    for (let type of Object.keys(article[lang])) {
+      for (let articleName of Object.keys(article[lang][type])) {
+        let content = await article[lang][type][articleName]
+        let newlineIndex = content.indexOf('\n')
+        let newArticle = (article[lang][type][articleName] = {
+          fileName: articleName
+        })
+        newArticle.content = content.substring(newlineIndex + 2)
+        newArticle.date = articleName.split('_')[0]
+        newArticle.digest = content.split('\n')[2].substring(0, 150)
+        newArticle.digest2 = content.split('\n')[2].substring(0, 40)
 
-      let title = content.split('\n')[0]
-      article[type][articleName].title = title.substring(2)
-      article[type][articleName].category = type
+        let title = content.split('\n')[0]
+        newArticle.title = title.substring(2)
+        newArticle.category = type
+      }
     }
   }
 }
