@@ -20,8 +20,17 @@
         </footer>
         </article>
       <% }%>
+
+      <div id="page-number">
+        <ul>
+          <li><a href="<%= pathExcludePage + prevPage %>"> < </a></li>
+          <li><a href="<%= pathExcludePage + nextPage %>"> > </a></li>
+        </ul>
+      </div>
+
     </div>
   </div>
+
   <div id="secondary" class="widget-area" role="complementary">
     <aside class="widget widget_wkc_random_posts">
       <h3 class="widget-title"> <%= locale('RANDOM POST') %></h3>

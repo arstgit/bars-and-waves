@@ -99,7 +99,6 @@ body {
 }
 
 body.custom-background {
-  /* background: url(./picture/background.jpg); */
   background-color: #1c1c1c;
   background-position: left top;
   background-size: auto;
@@ -217,6 +216,53 @@ section {
   margin-right: 7.6%;
   width: 18.8%;
 }
+
+#page-number {
+  margin-top: 10px;
+  width: 100%;
+  background: #4f4f4f;
+  border-top: 2px solid #000;
+  overflow: hidden;
+}
+#page-number ul,
+#page-number li,
+#page-number a {
+  background: #4f4f4f;
+  padding: 0;
+  margin: 0;
+  border: none;
+  text-decoration: none;
+  font-weight: 400;
+  font-style: normal;
+  list-style: none;
+  text-transform: none;
+  text-indent: 0;
+  font-variant: normal;
+  text-align: left;
+  line-height: 12px;
+  letter-spacing: 0;
+  word-spacing: 0;
+  font-size: 12px;
+  font-family: Arial;
+  color: #fff;
+}
+#page-number ul {
+  margin: 0 auto;
+  width: max-content;
+}
+#page-number li {
+  float: left;
+  display: block;
+  padding: 6px;
+  padding-right: 6px;
+  padding-right: 8px;
+  color: #ddd;
+  font-size: 11px;
+}
+#page-number li a:hover {
+  text-decoration: underline;
+}
+
 .widget-area {
   font-size: 12px;
 }

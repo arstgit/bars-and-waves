@@ -29,7 +29,7 @@
       </header>
 
       <% if (pageType === 'digest') { %>
-        <%- include('digest', { articleList, locale }) %>
+        <%- include('digest', { nextPage, prevPage, articleList, locale }) %>
       <% } %>
       <% if (pageType === 'detail') { %>
         <%- include('detail', { articleList, locale }) %>

@@ -1,6 +1,11 @@
+const ARTICLE_NUM_PER_PAGE = 6
+const MIN_PAGE = 1
+const MAX_PAGE = 20
+
 function initLang(ctx) {
   let lang = ctx.params.lang
-  if (!lang) lang = ctx.get('Accept-Language').includes('zh-CN') ? 'zh' : 'en'
+  //if (!lang) lang = ctx.get('Accept-Language').includes('zh-CN') ? 'zh' : 'en'
+  if (!lang) lang = 'zh'
 
   ctx.custom.lang = lang
 }
@@ -12,14 +17,49 @@ function pathExcludeLang(path) {
   return path
 }
 
+function getPathExcludePage(path) {
+  let regex = /^(.*?)(\/page\/\d+\/?)?$/
+  let result = regex.exec(path)
+  path = result[1]
+  if (!path.endsWith('/')) path = path + '/'
+  path = path + 'page/'
+  return path
+}
+
+function getPage(ctx) {
+  let page = ctx.params.page
+  if (!page) return MIN_PAGE
+
+  page = parseInt(page)
+
+  if (page < MIN_PAGE || page > MAX_PAGE) page = 1
+
+  return page
+}
+
 module.exports = {
   async category(ctx, service, app) {
     initLang(ctx)
+
+    let page = getPage(ctx)
 
     let articleList = await service.article.getList(
       ctx.custom.lang,
       ctx.params.category
     )
+
+    let maxPage = Math.ceil(articleList.length / ARTICLE_NUM_PER_PAGE)
+    let prevPage = page - 1
+    let nextPage = page + 1
+    if (nextPage > maxPage) nextPage = maxPage + 1
+    if (prevPage < MIN_PAGE) prevPage = MIN_PAGE
+
+    let initArticleNum = ARTICLE_NUM_PER_PAGE * (page - 1)
+    articleList = articleList.slice(
+      initArticleNum,
+      initArticleNum + ARTICLE_NUM_PER_PAGE
+    )
+
     let randomArticleList = await service.article.getRandomList(ctx.custom.lang)
     let pageType = 'digest'
 
@@ -31,7 +71,10 @@ module.exports = {
         pageType,
         articleList,
         randomArticleList,
-        pathExcludeLang: pathExcludeLang(ctx.path)
+        pathExcludeLang: pathExcludeLang(ctx.path),
+        nextPage,
+        prevPage,
+        pathExcludePage: getPathExcludePage(ctx.path)
       },
       null
     )
