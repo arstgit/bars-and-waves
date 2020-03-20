@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "node src/app",
-    "prettier": "prettier --write --no-semi --single-quote **/*.{js,css}",
+    "pretty": "prettier --write --no-semi --single-quote **/*.{js,css}",
     "test": "NODE_ENV=test node test",
     "deploy": "sh bin/deploy-remote.sh",
     "dev": "nodemon -e \"js,css,ejs,md,json\" -i data --exec \"npm start\""

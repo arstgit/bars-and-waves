@@ -136,12 +136,19 @@ body.custom-background {
   font-size: 0.875rem;
   margin-bottom: 5vh;
 }
-#branding img {
+#branding-img {
   display: block;
   width: 100%;
   height: 360px;
   object-fit: cover;
 }
+
+#github-ribbon {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 a img {
   border: 0;
 }
