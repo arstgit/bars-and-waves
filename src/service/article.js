@@ -1,6 +1,8 @@
 const fs = require('fs')
 const path = require('path')
 
+const RANDOM_ARTICLE_NUM = 6
+
 let populated = false
 let articleService = {}
 module.exports = articleService
@@ -41,8 +43,15 @@ articleService.getRandomList = async function(expectedLang) {
   })
 
   result = result.sort((a, b) => 0.5 - Math.random())
-  result = result.slice(0, 5)
+  result = result.slice(0, RANDOM_ARTICLE_NUM)
   return result
+}
+
+articleService.getAllStr = async function(expectedLang) {
+  let str = ''
+  let objList = await articleService.getList(expectedLang, null)
+  objList.map(obj => (str += obj.content))
+  return str
 }
 
 articleService.getList = async function(expectedLang, expectedCategory) {

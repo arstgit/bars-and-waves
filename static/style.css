@@ -227,15 +227,28 @@ section {
 #page-number {
   margin-top: 10px;
   width: 100%;
-  background: #4f4f4f;
   border-top: 2px solid #000;
   overflow: hidden;
 }
-#page-number ul,
-#page-number li,
+
+#page-number ul {
+  margin: 0 auto;
+  width: 100%;
+  overflow: hidden;
+}
+
+#page-number li {
+  list-style: none;
+  float: left;
+  width: 50%;
+}
+#page-number li:hover {
+  background: #000;
+}
+
 #page-number a {
+  display: block;
   background: #4f4f4f;
-  padding: 0;
   margin: 0;
   border: none;
   text-decoration: none;
@@ -245,29 +258,25 @@ section {
   text-transform: none;
   text-indent: 0;
   font-variant: normal;
-  text-align: left;
   line-height: 12px;
   letter-spacing: 0;
   word-spacing: 0;
-  font-size: 12px;
   font-family: Arial;
-  color: #fff;
-}
-#page-number ul {
-  margin: 0 auto;
-  width: max-content;
-}
-#page-number li {
-  float: left;
-  display: block;
   padding: 6px;
-  padding-right: 6px;
-  padding-right: 8px;
   color: #ddd;
   font-size: 11px;
 }
-#page-number li a:hover {
-  text-decoration: underline;
+
+#page-number li:hover > a {
+  background: #373737;
+  text-decoration: none;
+}
+
+#page-left {
+  text-align: right;
+}
+#page-right {
+  text-align: left;
 }
 
 .widget-area {
@@ -429,6 +438,10 @@ ul {
 .widget a:focus,
 .widget a:active {
   text-decoration: underline;
+}
+
+.tag-cloud a {
+  color: #8f8f8f;
 }
 
 #disqus_thread {

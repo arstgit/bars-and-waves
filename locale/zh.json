@@ -4,16 +4,17 @@
   "blog, programming, caprice, life, surfing": "blog,博客,编程,随想,生活,冲浪,",
   "bars and waves": "条形与波浪",
   "caprice blog": "随心博客 blog",
-  "LATEST": "最新更新",
-  "latest": "最新更新",
+  "LATEST": "最近更新",
+  "latest": "最近更新",
   "LIFESTYLE": "情趣生活",
   "lifestyle": "情趣生活",
   "PROGRAMMING": "编码技术",
   "programming": "编码技术",
+  "STILL": "STILL",
   "WEBMASTER RECOMMANDED": "站长推荐",
   "webmaster recommanded": "站长推荐",
   "category": "类别",
   "date": "发表于",
   "RANDOM POST": "随机文章",
-  "STILL": "STILL"
+  "TAG": "标签"
 }

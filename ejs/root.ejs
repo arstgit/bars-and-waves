@@ -18,8 +18,8 @@
           <div class="menu-container">
             <ul id="menu-1" class="menu">
               <li class="normal-li"><a href="/<%= lang %>"><%= locale("LATEST") %></a></li>
-              <li class="normal-li"><a href="/<%= lang %>/category/lifestyle"><%= locale("LIFESTYLE") %></a></li>
               <li class="normal-li"><a href="/<%= lang %>/category/programming"><%= locale("PROGRAMMING") %></a></li>
+              <li class="normal-li"><a href="/<%= lang %>/category/lifestyle"><%= locale("LIFESTYLE") %></a></li>
               <li class="normal-li"><a href="/<%= lang %>/category/still"><%= locale("STILL") %></a></li>
               <li class="normal-li"><a href="/<%= lang %>/category/webmaster-recommended"><%= locale("WEBMASTER RECOMMANDED") %></a></li>
               <li id="button-lang-zh"><a href="/zh<%= pathExcludeLang %>">中文</a></li>
@@ -31,7 +31,7 @@
       </header>
 
       <% if (pageType === 'digest') { %>
-        <%- include('digest', { nextPage, prevPage, articleList, locale }) %>
+        <%- include('digest', { nextPage, prevPage, articleList, locale, tags }) %>
       <% } %>
       <% if (pageType === 'detail') { %>
         <%- include('detail', { articleList, locale }) %>

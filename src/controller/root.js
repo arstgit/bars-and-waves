@@ -2,41 +2,6 @@ const ARTICLE_NUM_PER_PAGE = 6
 const MIN_PAGE = 1
 const MAX_PAGE = 20
 
-function initLang(ctx) {
-  let lang = ctx.params.lang
-  //if (!lang) lang = ctx.get('Accept-Language').includes('zh-CN') ? 'zh' : 'en'
-  if (!lang) lang = 'zh'
-
-  ctx.custom.lang = lang
-}
-
-function pathExcludeLang(path) {
-  if (path.startsWith('/en') || path.startsWith('/zh')) {
-    return path.substring(3)
-  }
-  return path
-}
-
-function getPathExcludePage(path) {
-  let regex = /^(.*?)(\/page\/\d+\/?)?$/
-  let result = regex.exec(path)
-  path = result[1]
-  if (!path.endsWith('/')) path = path + '/'
-  path = path + 'page/'
-  return path
-}
-
-function getPage(ctx) {
-  let page = ctx.params.page
-  if (!page) return MIN_PAGE
-
-  page = parseInt(page)
-
-  if (page < MIN_PAGE || page > MAX_PAGE) page = 1
-
-  return page
-}
-
 module.exports = {
   async category(ctx, service, app) {
     initLang(ctx)
@@ -61,8 +26,10 @@ module.exports = {
     )
 
     let randomArticleList = await service.article.getRandomList(ctx.custom.lang)
-    let pageType = 'digest'
+    let allStr = await service.article.getAllStr(ctx.custom.lang)
+    let tags = app.jieba.extract(allStr)
 
+    let pageType = 'digest'
     ctx.body = await app.ejs.renderFileAsync(
       'ejs/root.ejs',
       {
@@ -74,7 +41,8 @@ module.exports = {
         pathExcludeLang: pathExcludeLang(ctx.path),
         nextPage,
         prevPage,
-        pathExcludePage: getPathExcludePage(ctx.path)
+        pathExcludePage: getPathExcludePage(ctx.path),
+        tags
       },
       null
     )
@@ -110,4 +78,39 @@ module.exports = {
       null
     )
   }
+}
+
+function initLang(ctx) {
+  let lang = ctx.params.lang
+  //if (!lang) lang = ctx.get('Accept-Language').includes('zh-CN') ? 'zh' : 'en'
+  if (!lang) lang = 'zh'
+
+  ctx.custom.lang = lang
+}
+
+function pathExcludeLang(path) {
+  if (path.startsWith('/en') || path.startsWith('/zh')) {
+    return path.substring(3)
+  }
+  return path
+}
+
+function getPathExcludePage(path) {
+  let regex = /^(.*?)(\/page\/\d+\/?)?$/
+  let result = regex.exec(path)
+  path = result[1]
+  if (!path.endsWith('/')) path = path + '/'
+  path = path + 'page/'
+  return path
+}
+
+function getPage(ctx) {
+  let page = ctx.params.page
+  if (!page) return MIN_PAGE
+
+  page = parseInt(page)
+
+  if (page < MIN_PAGE || page > MAX_PAGE) page = 1
+
+  return page
 }
