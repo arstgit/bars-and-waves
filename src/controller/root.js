@@ -6,28 +6,32 @@ module.exports = {
   async category(ctx, service, app) {
     initLang(ctx)
 
-    let page = getPage(ctx)
+    let curPageNum, maxPageNum, prevPageNum, nextPageNum
+    curPageNum = getPage(ctx)
 
     let articleList = await service.article.getList(
       ctx.custom.lang,
       ctx.params.category
     )
 
-    let maxPage = Math.ceil(articleList.length / ARTICLE_NUM_PER_PAGE)
-    let prevPage = page - 1
-    let nextPage = page + 1
-    if (nextPage > maxPage) nextPage = maxPage + 1
-    if (prevPage < MIN_PAGE) prevPage = MIN_PAGE
+    maxPageNum = Math.ceil(articleList.length / ARTICLE_NUM_PER_PAGE)
+    prevPageNum = curPageNum - 1
+    nextPageNum = curPageNum + 1
+    if (nextPageNum > maxPageNum) nextPageNum = maxPageNum
+    if (prevPageNum < MIN_PAGE) prevPageNum = MIN_PAGE
 
-    let initArticleNum = ARTICLE_NUM_PER_PAGE * (page - 1)
+    let initArticleNum = ARTICLE_NUM_PER_PAGE * (curPageNum - 1)
     articleList = articleList.slice(
       initArticleNum,
       initArticleNum + ARTICLE_NUM_PER_PAGE
     )
 
     let randomArticleList = await service.article.getRandomList(ctx.custom.lang)
+
     let allStr = await service.article.getAllStr(ctx.custom.lang)
     let tags = app.jieba.extract(allStr)
+
+    let fortune = service.fortune.get()
 
     let pageType = 'digest'
     ctx.body = await app.ejs.renderFileAsync(
@@ -39,10 +43,13 @@ module.exports = {
         articleList,
         randomArticleList,
         pathExcludeLang: pathExcludeLang(ctx.path),
-        nextPage,
-        prevPage,
+        nextPageNum,
+        prevPageNum,
+        curPageNum,
+        maxPageNum,
         pathExcludePage: getPathExcludePage(ctx.path),
-        tags
+        tags,
+        fortune
       },
       null
     )

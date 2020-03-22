@@ -144,13 +144,11 @@ body.custom-background {
 }
 
 #github-ribbon {
-  position: absolute;
-  top: 0;
+  position: fixed;
+  bottom: 0;
   right: 0;
-}
-
-a img {
-  border: 0;
+  height: 64px;
+  width: 64px;
 }
 
 #access {
@@ -158,10 +156,9 @@ a img {
   clear: both;
   display: block;
   float: left;
-  margin: 0 auto 6px;
+  margin: 0 auto 8px;
   width: 100%;
-  background: -webkit-linear-gradient(#383838, #272727);
-  border-bottom: 1px solid #222;
+  background: #524532;
 }
 
 #access ul {
@@ -226,6 +223,7 @@ section {
 
 #page-number {
   margin-top: 10px;
+  margin-bottom: 25px;
   width: 100%;
   border-top: 2px solid #000;
   overflow: hidden;
@@ -242,8 +240,19 @@ section {
   float: left;
   width: 50%;
 }
+
 #page-number li:hover {
   background: #000;
+}
+
+#page-info {
+  display: inline-block;
+  width: 50%;
+}
+#page-left {
+  display: inline-block;
+  width: 50%;
+  text-align: right;
 }
 
 #page-number a {
@@ -270,13 +279,6 @@ section {
 #page-number li:hover > a {
   background: #373737;
   text-decoration: none;
-}
-
-#page-left {
-  text-align: right;
-}
-#page-right {
-  text-align: left;
 }
 
 .widget-area {
@@ -426,9 +428,10 @@ a {
 ul {
   list-style: square;
 }
-.widget ul li {
+.widget ul li,
+.widget p {
   color: #c5c5c5;
-  font-size: 13px;
+  font-size: 14px;
 }
 .widget a {
   font-weight: 700;
@@ -481,5 +484,10 @@ ul {
   .singular .entry-header,
   .singular .entry-content {
     width: 100%;
+  }
+  #github-ribbon,
+  #github-ribbon img {
+    height: 32px;
+    width: 32px;
   }
 }

@@ -1,4 +1,6 @@
 FROM node
+RUN apt-get update && apt-get install fortune -y
+
 COPY . /app
 WORKDIR /app
 RUN npm install
