@@ -6,7 +6,7 @@
 
 ## 上手 & 记忆
 
-![ms shuangpin](https://www.tiaoxingyubolang.com/static/picture/shuangpin.png)
+![ms shuangpin](/static/picture/shuangpin.png)
 
 双拼有许多版本, 各个版本大同小异, 我选择了微软双拼. 多个版本双拼在 windowns 和 linux 上都完美支持, windows 直接在原生输入法里设置, linux 在 fcitx 设置工具里设置, 设置完成后就可以上手了. 
 
@@ -41,6 +41,6 @@
 
 系列上篇
 
-非得搞个不一样(一) - 键盘陪列 colemak [https://www.tiaoxingyubolang.com/article/2020-01-26_colemak](https://www.tiaoxingyubolang.com/article/2020-01-26_colemak)
+非得搞个不一样(一) - 键盘陪列 colemak [https://www.tiaoxingyubolang.com/article/2020-01-26_colemak](/article/2020-01-26_colemak)
 
 中, 我已经把键盘陪列换成了 colemak, 现在把双拼和 colemak 混合在了一起, 英文输入会受益于 colemak 的高频字排列优化, 中文输入保持了双拼带来的敲击节奏. 可以说是一次完美的融合.

@@ -58,6 +58,8 @@
 
 ## eventloop 的根基 libuv
 
+![nodejs-eventloop](/static/picture/nodejs-eventloop.png)
+
 在源码 libuv/src/unix/core.c 中定义了函数 uv_run: 
 
 ```

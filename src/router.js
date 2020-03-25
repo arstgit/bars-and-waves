@@ -2,10 +2,10 @@ module.exports = app => {
   return {
     'get /:lang(en|zh)?': app.controller.root.category,
     'get /:lang(en|zh)?/page/:page': app.controller.root.category,
-    'get /:lang(en|zh)/category/:category': app.controller.root.category,
-    'get /:lang(en|zh)/category/:category/page/:page':
+    'get /:lang(en|zh)?/category/:category': app.controller.root.category,
+    'get /:lang(en|zh)?/category/:category/page/:page':
       app.controller.root.category,
-    'get /:lang(en|zh)/article/:article': app.controller.root.article,
+    'get /:lang(en|zh)?/article/:article': app.controller.root.article,
 
     'get /static/:filepath+': app.controller.static.get,
 

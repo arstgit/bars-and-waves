@@ -6,7 +6,7 @@ On the surface, the reduction of keys can increase the typing speed. In fact, th
 
 ## Get started & memory
 
-![ms shuangpin](https://www.tiaoxingyubolang.com/static/picture/shuangpin.png)
+![ms shuangpin](/static/picture/shuangpin.png)
 
 There are many versions of Shuangpin, and each version is similar. I chose Microsoft Shuangpin. Multiple versions of Shuangpin are perfectly supported on windows and Linux. Windows is set directly in the native input method. Linux is set in the fcitx setting tool. The setting is complete. Then you can get started.
 
@@ -41,7 +41,7 @@ After memorizing the recipe, you can throw all the spells aside, and set your no
 
 Part I
 
-Have to make a difference (1)-keyboard companion colemak [https://www.tiaoxingyubolang.com/article/2020-01-26_colemak](https://www.tiaoxingyubolang.com/article/2020-01-26_colemak )
+Have to make a difference (1)-keyboard companion colemak [/article/2020-01-26_colemak](/article/2020-01-26_colemak )
 
 In Chinese, I have replaced the keyboard companion with colemak, and now I have mixed Shuangpin and colemak together.The English input will benefit from the optimization of the high-frequency word arrangement of colemak, and the Chinese input maintains the percussion rhythm brought by Shuangpin. It can be said that it is a perfect fusion.
 
