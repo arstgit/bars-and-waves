@@ -2,5 +2,8 @@ language: node_js
 node_js:
 - lts/*
 
+before_install:
+  - sudo apt-get update && apt-get -y install fortune
+
 env:
 - NODE_ENV=test
