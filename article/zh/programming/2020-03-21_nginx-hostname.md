@@ -7,11 +7,11 @@
 在 /etc/nginx/conf.d 下新建文件 example.conf:
 
 ```
-upstream book_pool{
+upstream foo_pool{
     server 127.0.0.1:3000;
 }
 
-upstream movie_pool{
+upstream bar_pool{
     server 127.0.0.1:3001;
 }
 
@@ -21,7 +21,7 @@ server {
     server_name  www.tiaoxingyubolang.com;
 
     location / {
-        proxy_pass http://book_pool/;
+        proxy_pass http://foo_pool/;
         proxy_set_header Host $host;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
@@ -33,7 +33,7 @@ server {
     server_name  www.netsphere.live;
 
     location / {
-        proxy_pass http://movie_pool/;
+        proxy_pass http://bar_pool/;
         proxy_set_header Host $host;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
