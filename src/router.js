@@ -13,6 +13,7 @@ module.exports = app => {
     'get /style.css': app.controller.redirect.toStatic,
     'get /sitemap.xml': app.controller.redirect.toStatic,
     'get /ads.txt': app.controller.redirect.toStatic,
+    'get /robots.txt': app.controller.redirect.toStatic,
 
     'get /user': app.controller.user.get,
 
