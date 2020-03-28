@@ -290,3 +290,8 @@ function helper() {
 }
 ```
 
+## 最后
+
+Nodejs 能够高效执行 I/O 操作, 这要归功于这精妙的 Event Loop. 而 Event Loop 的核心, libuv, 在 Linux 环境下面实际上是基于 epoll 的. 对于 epoll 的原理与实现感兴趣的读者可以参阅这篇文章:
+
+从源码理解 epoll [https://www.tiaoxingyubolang.com/article/2020-03-27_epoll1](/article/2020-03-27_epoll1)
