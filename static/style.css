@@ -295,6 +295,15 @@ section {
   overflow: hidden;
 }
 
+#ad-right {
+  position: fixed;
+  top: 50%;
+  width: 10vw;
+  height: 600px;
+  margin-top: -300px;
+  right: 4%;
+}
+
 #supplementary {
   border-top: 1px solid #ddd;
   border-color: #222;
@@ -497,5 +506,11 @@ ul {
   #github-ribbon img {
     height: 32px;
     width: 32px;
+  }
+}
+
+@media (max-width: 1480px) {
+  #ad-right {
+    display: none;
   }
 }
