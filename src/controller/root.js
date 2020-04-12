@@ -38,7 +38,7 @@ module.exports = {
       'ejs/root.ejs',
       {
         lang: ctx.custom.lang,
-        locale: str => app.locale(str, ctx.custom.lang),
+        locale: (str) => app.locale(str, ctx.custom.lang),
         pageType,
         articleList,
         randomArticleList,
@@ -49,7 +49,7 @@ module.exports = {
         maxPageNum,
         pathExcludePage: getPathExcludePage(ctx.path),
         tags,
-        fortune
+        fortune,
       },
       null
     )
@@ -66,11 +66,11 @@ module.exports = {
       'ejs/root.ejs',
       {
         lang: ctx.custom.lang,
-        locale: str => app.locale(str, ctx.custom.lang),
+        locale: (str) => app.locale(str, ctx.custom.lang),
         pageType,
         articleList,
         markdown: app.markdown.compile,
-        pathExcludeLang: pathExcludeLang(ctx.path)
+        pathExcludeLang: pathExcludeLang(ctx.path),
       },
       null
     )
@@ -81,10 +81,13 @@ module.exports = {
 
     ctx.body = await app.ejs.renderFileAsync(
       'ejs/unknown.ejs',
-      { locale: str => app.locale(str, ctx.custom.lang), pathExcludeLang: '/' },
+      {
+        locale: (str) => app.locale(str, ctx.custom.lang),
+        pathExcludeLang: '/',
+      },
       null
     )
-  }
+  },
 }
 
 function initLang(ctx) {

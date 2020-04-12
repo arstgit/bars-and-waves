@@ -5,7 +5,7 @@
 ## 依序安装/执行
 
 - apt remove lightdm
-- apt install xmonad redshift xserver-xorg-input-synaptics fcitx fcitx-table-all fcitx-anthy alsa-utils npm
+- apt install xmonad redshift xserver-xorg-input-synaptics fcitx fcitx-table-all fcitx-anthy alsa-utils npm docker.io
 - 拷贝设置文件. 克隆 https://github.com/derekchuank/debian-config, 执行 bin/restore.sh.
 - 在 fcitx-configtool 中关闭 punctuation support, 因为我只使用英文标点.
 
@@ -17,4 +17,5 @@
 - fcitx. 输入法.
 - alsa-utils. 音量控制.
 - npm. Nodejs 环境.
+- docker.io. docker.
 

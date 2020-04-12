@@ -11,14 +11,14 @@ setInterval(refresh, REFRESH_INTERVAL)
 module.exports = {
   get: () => {
     return str
-  }
+  },
 }
 
 function refresh() {
   str = ''
   fortune = child_process.spawn('/usr/games/fortune', [])
-  fortune.stdout.on('data', data => (str += data))
-  fortune.on('exit', code => {
+  fortune.stdout.on('data', (data) => (str += data))
+  fortune.on('exit', (code) => {
     if (code !== 0) {
       console.log('fortune exit code: ' + code)
     }

@@ -11,15 +11,15 @@ let dir = __dirname + '/../../article'
 let article = load(dir)
 
 articleService.article = article
-articleService.get = async function(expectedLang, fileName) {
+articleService.get = async function (expectedLang, fileName) {
   await populateArticle(article)
 
   let result = []
-  Object.keys(article).map(lang => {
+  Object.keys(article).map((lang) => {
     if (lang !== expectedLang) return
 
-    Object.keys(article[lang]).map(category => {
-      Object.keys(article[lang][category]).map(articleName => {
+    Object.keys(article[lang]).map((category) => {
+      Object.keys(article[lang][category]).map((articleName) => {
         if (articleName === fileName) {
           result.push(article[lang][category][articleName])
         }
@@ -29,14 +29,14 @@ articleService.get = async function(expectedLang, fileName) {
   return result
 }
 
-articleService.getRandomList = async function(expectedLang) {
+articleService.getRandomList = async function (expectedLang) {
   await populateArticle(article)
   let result = []
-  Object.keys(article).map(lang => {
+  Object.keys(article).map((lang) => {
     if (lang !== expectedLang) return
 
-    Object.keys(article[lang]).map(category => {
-      Object.keys(article[lang][category]).map(articleName => {
+    Object.keys(article[lang]).map((category) => {
+      Object.keys(article[lang][category]).map((articleName) => {
         result.push(article[lang][category][articleName])
       })
     })
@@ -47,24 +47,24 @@ articleService.getRandomList = async function(expectedLang) {
   return result
 }
 
-articleService.getAllStr = async function(expectedLang) {
+articleService.getAllStr = async function (expectedLang) {
   let str = ''
   let objList = await articleService.getList(expectedLang, null)
-  objList.map(obj => (str += obj.content))
+  objList.map((obj) => (str += obj.content))
   return str
 }
 
-articleService.getList = async function(expectedLang, expectedCategory) {
+articleService.getList = async function (expectedLang, expectedCategory) {
   await populateArticle(article)
   let result = []
 
-  Object.keys(article).map(lang => {
+  Object.keys(article).map((lang) => {
     if (lang !== expectedLang) return
 
-    Object.keys(article[lang]).map(category => {
+    Object.keys(article[lang]).map((category) => {
       if (expectedCategory && category !== expectedCategory) return
 
-      Object.keys(article[lang][category]).map(articleName => {
+      Object.keys(article[lang][category]).map((articleName) => {
         result.unshift(article[lang][category][articleName])
       })
     })
@@ -92,7 +92,7 @@ async function populateArticle(article) {
         let content = await article[lang][type][articleName]
         let newlineIndex = content.indexOf('\n')
         let newArticle = (article[lang][type][articleName] = {
-          fileName: articleName
+          fileName: articleName,
         })
         newArticle.content = content.substring(newlineIndex + 2)
         newArticle.date = articleName.split('_')[0]
@@ -112,7 +112,7 @@ function load(dir) {
 
   let result = {}
 
-  files.forEach(file => {
+  files.forEach((file) => {
     let ext = path.extname(file)
 
     let baseName = path.basename(file, ext)
@@ -126,7 +126,7 @@ function load(dir) {
     if (fs.statSync(abs).isDirectory()) {
       result[baseName] = load(abs)
     } else {
-      ;['.md'].forEach(ext => {
+      ;['.md'].forEach((ext) => {
         if (abs.endsWith(ext)) {
           result[baseName] = fs.promises.readFile(abs, { encoding: 'utf8' })
         }

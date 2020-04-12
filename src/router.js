@@ -1,4 +1,4 @@
-module.exports = app => {
+module.exports = (app) => {
   return {
     'get /:lang(en|zh)?': app.controller.root.category,
     'get /:lang(en|zh)?/page/:page': app.controller.root.category,
@@ -17,6 +17,6 @@ module.exports = app => {
 
     'get /user': app.controller.user.get,
 
-    'get /:unknown*': app.controller.root.unknown
+    'get /:unknown*': app.controller.root.unknown,
   }
 }

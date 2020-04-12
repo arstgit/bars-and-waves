@@ -8,7 +8,7 @@ const FONT_SIZE_STEP = (MAX_FONT_SIZE - MIN_FONT_SIZE) / TOPN
 let strMap = {}
 
 module.exports = {
-  extract: function(str) {
+  extract: function (str) {
     if (strMap[str]) {
       return strMap[str]
     } else {
@@ -21,5 +21,5 @@ module.exports = {
 
       return (strMap[str] = arr)
     }
-  }
+  },
 }

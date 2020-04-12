@@ -6,5 +6,5 @@ module.exports = {
     ctx.body = await service.static.readFileAsync(
       __dirname + '/../../static/' + ctx.params.filepath
     )
-  }
+  },
 }

@@ -23,9 +23,9 @@ function Loader() {
   let router = routerF(this)
   let me = this
   Object.assign(me, plugin)
-  Object.keys(router).forEach(key => {
+  Object.keys(router).forEach((key) => {
     const [method, path] = key.split(' ')
-    koaRouter[method](path, async function(ctx) {
+    koaRouter[method](path, async function (ctx) {
       await router[key](ctx, service, me)
     })
   })
