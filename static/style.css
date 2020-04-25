@@ -509,6 +509,12 @@ ul {
   }
 }
 
+@media (max-width: 1050px) {
+  #branding img {
+    height: 280px;
+  }
+}
+
 @media (max-width: 1480px) {
   #ad-right {
     display: none;
