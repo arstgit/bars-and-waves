@@ -87,6 +87,7 @@ module.exports = {
       },
       null
     )
+    ctx.status = 404
   },
 }
 
