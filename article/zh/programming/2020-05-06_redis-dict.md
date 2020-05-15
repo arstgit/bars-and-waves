@@ -1,6 +1,6 @@
 # 深入 redis 源码, 字典 dict
 
-redis 使用的 hash table 在其内部被称作 dict. 实际上, redis 的一个数据库就是一个 dict.
+redis 使用的 hash table 在其内部被称作 dict. 正如其名: remote dictionary server, 实际上, redis 的一个数据库就是一个 dict.
 
 ## dict 数据结构
 
