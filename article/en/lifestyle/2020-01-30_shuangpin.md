@@ -1,4 +1,4 @@
-# Have to do special(2) - Shuangpin
+# Have to be special(2) - Shuangpin
 
 Zhuang, Quanpin input method requires pressing six keys, double spelling only requires pressing two keys, vd.
 
