@@ -9,7 +9,7 @@
 
 - apt update && apt upgrade
 
-- apt install xmonad acpi redshift xserver-xorg-input-synaptics fcitx fcitx-table-all fcitx-anthy alsa-utils npm docker.io tor aria2 dict
+- apt install xmonad acpi redshift xserver-xorg-input-synaptics fcitx fcitx-table-all fcitx-anthy alsa-utils npm golang docker.io tor aria2 dict
 > 后面会简单介绍各个软件.
 
 - git config --global credential.helper store
@@ -37,6 +37,7 @@
 - fcitx. 输入法.
 - alsa-utils. 音量控制.
 - npm. Nodejs 环境.
+- golang. golang 环境.
 - docker. docker 环境.
 - tor. 匿名代理.
 - aria2. 下载管理器.
