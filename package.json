@@ -30,7 +30,7 @@
   "homepage": "https://github.com/derekchuank/bars-and-waves#readme",
   "dependencies": {
     "ejs": "^3.0.1",
-    "highlight.js": "^9.18.0",
+    "highlight.js": "^10.4.1",
     "koa": "^2.11.0",
     "koa-morgan": "^1.0.1",
     "koa-ratelimit": "^4.2.1",
