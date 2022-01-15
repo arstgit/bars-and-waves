@@ -36,7 +36,7 @@
     "koa-ratelimit": "^4.2.1",
     "koa-router": "^7.4.0",
     "lru-cache": "^5.1.1",
-    "marked": "^0.8.0",
+    "marked": "^4.0.10",
     "nodejieba": "^2.4.1",
     "psychedelic": "^1.0.1",
     "ya-config-loader": "^1.0.0",
